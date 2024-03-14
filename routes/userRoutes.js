@@ -55,13 +55,13 @@ router.post('/login', async (req, res) => {
                 return res.status(400).json({ message: "Incorrect credentials" })
             }
             const token = jwt.sign({ id: user._id }, SECRET)
-            res.cookie(
-                "token", token, {
-                httpOnly: true,
-                secure: process.env.NODE_ENV === 'development',
-                sameSite: "strict",
-                maxAge: jwtExpirySeconds * 1000
-            })
+            // res.cookie(
+            //     "token", token, {
+            //     httpOnly: true,
+            //     secure: process.env.NODE_ENV === 'development',
+            //     sameSite: "strict",
+            //     maxAge: jwtExpirySeconds * 1000
+            // })
             res.json({ message: 'Successfully logged in' })
 
         } catch (err) {
